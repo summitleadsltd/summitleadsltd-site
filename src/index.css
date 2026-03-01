@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* Summit Leads Design System - Northern Lights Theme */
+
+@layer base {
+  :root {
+    /* Aurora Base Colors */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Aurora Primary - Teal/Cyan */
+    --primary: 175 80% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    /* Aurora Secondary - Purple/Violet */
+    --secondary: 270 60% 55%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted for subtle elements */
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent - Magenta/Pink aurora */
+    --accent: 300 70% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 20%;
+    --input: 222 30% 15%;
+    --ring: 175 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Aurora gradient colors */
+    --aurora-teal: 175 80% 50%;
+    --aurora-cyan: 185 85% 55%;
+    --aurora-violet: 270 60% 55%;
+    --aurora-magenta: 300 70% 60%;
+    --aurora-green: 150 70% 45%;
+
+    /* Glass effect */
+    --glass: 222 47% 10% / 0.7;
+    --glass-border: 175 80% 50% / 0.2;
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 175 80% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 30% 20%;
+    --sidebar-ring: 175 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .aurora-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--aurora-teal)) 0%,
+      hsl(var(--aurora-cyan)) 25%,
+      hsl(var(--aurora-violet)) 50%,
+      hsl(var(--aurora-magenta)) 75%,
+      hsl(var(--aurora-green)) 100%
+    );
+  }
+
+  .aurora-text {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--aurora-teal)) 0%,
+      hsl(var(--aurora-cyan)) 30%,
+      hsl(var(--aurora-violet)) 70%,
+      hsl(var(--aurora-magenta)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: hsl(var(--glass));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .aurora-glow {
+    box-shadow: 
+      0 0 20px hsl(var(--aurora-teal) / 0.3),
+      0 0 40px hsl(var(--aurora-violet) / 0.2),
+      0 0 60px hsl(var(--aurora-magenta) / 0.1);
+  }
+
+  .aurora-border {
+    border: 1px solid transparent;
+    background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, hsl(var(--aurora-teal)), hsl(var(--aurora-violet)), hsl(var(--aurora-magenta))) border-box;
+  }
+}
+
+@layer utilities {
+  .animate-aurora {
+    animation: aurora 15s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes aurora {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 
+        0 0 20px hsl(var(--aurora-teal) / 0.4),
+        0 0 40px hsl(var(--aurora-violet) / 0.3);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 
+        0 0 30px hsl(var(--aurora-teal) / 0.6),
+        0 0 60px hsl(var(--aurora-violet) / 0.4);
+    }
+  }
+}
